@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Class-Path: cxf-rt-frontend-jaxrs-3.1.2.jar cxf-core-3.1.2.jar woodsto
+ x-core-asl-4.4.1.jar stax2-api-3.1.4.jar xmlschema-core-2.2.1.jar jav
+ ax.ws.rs-api-2.0.1.jar javax.annotation-api-1.2.jar cxf-rt-transports
+ -http-3.1.2.jar cxf-rt-rs-extension-providers-3.1.2.jar cxf-rt-rs-cli
+ ent-3.1.2.jar jackson-core-asl-1.8.6.jar jackson-mapper-asl-1.8.6.jar
+  jackson-jaxrs-1.8.6.jar spring-web-4.1.6.RELEASE.jar spring-aop-4.1.
+ 6.RELEASE.jar aopalliance-1.0.jar spring-beans-4.1.6.RELEASE.jar spri
+ ng-core-4.1.6.RELEASE.jar commons-logging-1.0.4.jar spring-context-4.
+ 1.6.RELEASE.jar spring-expression-4.1.6.RELEASE.jar commons-httpclien
+ t-3.1.jar commons-codec-1.2.jar httpclient-4.1.3.jar httpcore-4.1.4.j
+ ar httpmime-4.1.3.jar
+
