@@ -1,0 +1,49 @@
+#row1 #col1 {
+	background-color: white;
+	size :50%;
+
+}
+#row1 #col2 {
+	background-color: #15afba;
+	
+	color: white;
+	height: 190px;
+}
+#row1 #col3 {
+	background-color: orange
+}
+#menus {
+  position: absolute;
+    bottom: 0;
+    right: 0;
+   text-align: left;
+}
+li {
+    display: inline;
+     float: left;
+   
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #1c9199;
+}
+
+.btn-prim {
+  color: #fff;
+  background-color: #15afba;
+  border-color: #2e6da4;
+}
+
+.btn-prim:hover {
+  color: #fff;
+  background-color: #1c9199;
+  border-color: #204d74;
+}
