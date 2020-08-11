@@ -80,7 +80,7 @@ public class ToDoControllerTest {
 		.andDo(print());
 	}
 	
-	@Test
+	//@Test
 	public void verifyDeleteToDo() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.delete("/todo/5").accept(MediaType.APPLICATION_JSON))
 		.andExpect(jsonPath("$.status").value(200))

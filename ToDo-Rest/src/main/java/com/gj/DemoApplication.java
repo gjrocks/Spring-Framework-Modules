@@ -2,8 +2,13 @@ package com.gj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.gj.model.ToDo;
+import com.gj.repository.ToDoRepository;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -13,8 +18,8 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-	
-	/*@Bean
+	    
+	@Bean
 	public CommandLineRunner setup(ToDoRepository toDoRepository) {
 		return (args) -> {
 			toDoRepository.save(new ToDo("Remove unused imports", true));
@@ -23,5 +28,5 @@ public class DemoApplication {
 			toDoRepository.save(new ToDo("Deploy the jar file", true));
 			logger.info("The sample data has been generated");
 		};
-	}*/
+	}
 }
