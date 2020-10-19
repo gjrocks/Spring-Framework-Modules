@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="resources/lib/"/>
+	<classpathentry kind="lib" path="resources/etl"/>
+	<classpathentry kind="lib" path="resources/lib/commons-jexl.jar"/>
+	<classpathentry kind="lib" path="resources/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="resources/lib/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="resources/lib/scriptella-core.jar"/>
+	<classpathentry kind="lib" path="resources/lib/scriptella-drivers.jar"/>
+	<classpathentry kind="lib" path="resources/lib/scriptella-tools.jar"/>
+	<classpathentry kind="lib" path="resources/lib/scriptella.jar"/>
+	<classpathentry kind="lib" path="resources/lib/janino-2.7.8.jar"/>
+	<classpathentry kind="lib" path="resources/lib/commons-compiler-2.7.8.jar"/>
+	<classpathentry kind="lib" path="resources/lib/acegi-security-1.0.7.jar"/>
+	<classpathentry kind="lib" path="resources/lib/bcprov-jdk16-141.jar"/>
+	<classpathentry kind="lib" path="resources/lib/cryptix-jce-provider.jar"/>
+	<classpathentry kind="lib" path="resources/lib/cryptix-message-api.jar"/>
+	<classpathentry kind="lib" path="resources/lib/cryptix-openpgp-provider.jar"/>
+	<classpathentry kind="lib" path="resources/lib/cryptix-pki-api.jar"/>
+	<classpathentry kind="lib" path="resources/lib/jasypt-1.5.jar"/>
+	<classpathentry kind="lib" path="resources/lib/spring-core-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="resources/lib/spring-beans-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="resources/lib/commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="resources/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="resources/lib/commons-codec.jar"/>
+	<classpathentry kind="lib" path="resources/lib/velocity-dep-1.4.jar"/>
+	<classpathentry kind="lib" path="resources/lib/xstream-1.2.jar"/>
+	<classpathentry kind="lib" path="resources/lib/xpp3_min.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
