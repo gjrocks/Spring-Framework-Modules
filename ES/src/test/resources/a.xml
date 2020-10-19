@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ns1:Response
+	xmlns:ns1="http://www.zootweb.eu/ze_messaging">
+	<ns1:TransactionID>amssfect02v:5f50e23c:0006812e</ns1:TransactionID>
+	<ns1:TransactionDateTime>2020-09-03T14:31:56Z</ns1:TransactionDateTime>
+	<ns1:Applicants>
+		<ns1:Applicant ns1:id="1">
+			<ns1:Names>
+				<ns1:Name ns1:type="CUSTOMER" ns1:id="1">
+					<ns1:LastName></ns1:LastName>
+					<ns1:NameDetails>
+						<ns1:StringAttr ns1:category="BUREAU"
+							ns1:attribute="CB_ID"></ns1:StringAttr>
+						<ns1:StringAttr ns1:category="BUREAU"
+							ns1:attribute="CB_NAME"></ns1:StringAttr>
+						<ns1:StringAttr ns1:attribute="CC_Cust_ID">TALF099533
+						</ns1:StringAttr>
+					</ns1:NameDetails>
+				</ns1:Name>
+			</ns1:Names>
+			<ns1:Addresses>
+				<ns1:Address ns1:type="Cur" ns1:id="1">
+					<ns1:Street1></ns1:Street1>
+					<ns1:City></ns1:City>
+				</ns1:Address>
+			</ns1:Addresses>
+		</ns1:Applicant>
+		<ns1:Applicant ns1:id="2">
+			<ns1:Names>
+				<ns1:Name ns1:type="ASSOCIATE" ns1:id="1">
+					<ns1:FirstName>Bob</ns1:FirstName>
+					<ns1:LastName>Test</ns1:LastName>
+					<ns1:DateOfBirth>1950-01-01</ns1:DateOfBirth>
+					<ns1:IsCompany>false</ns1:IsCompany>
+					<ns1:NameDetails>
+						<ns1:StringAttr ns1:category="BUREAU"
+							ns1:attribute="CB_ID"></ns1:StringAttr>
+						<ns1:StringAttr ns1:category="BUREAU"
+							ns1:attribute="CB_NAME">EXPA</ns1:StringAttr>
+						<ns1:StringAttr ns1:attribute="CC_Cust_ID">TALF099534
+						</ns1:StringAttr>
+					</ns1:NameDetails>
+				</ns1:Name>
+			</ns1:Names>
+			<ns1:Addresses>
+				<ns1:Address ns1:type="Cur" ns1:id="1">
+					<ns1:HouseNumber>J D F House</ns1:HouseNumber>
+					<ns1:Street1>Barnett Way</ns1:Street1>
+					<ns1:City>Barnwood</ns1:City>
+					<ns1:PostZIPCode>GL43GG</ns1:PostZIPCode>
+					<ns1:Country>GB</ns1:Country>
+				</ns1:Address>
+			</ns1:Addresses>
+		</ns1:Applicant>
+		<ns1:Applicant ns1:id="3">
+			<ns1:Names>
+				<ns1:Name ns1:type="ASSOCIATE" ns1:id="1">
+					<ns1:FirstName>Alan</ns1:FirstName>
+					<ns1:LastName>Test</ns1:LastName>
+					<ns1:DateOfBirth>1950-01-01</ns1:DateOfBirth>
+					<ns1:IsCompany>false</ns1:IsCompany>
+					<ns1:NameDetails>
+						<ns1:StringAttr ns1:category="BUREAU"
+							ns1:attribute="CB_ID"></ns1:StringAttr>
+						<ns1:StringAttr ns1:category="BUREAU"
+							ns1:attribute="CB_NAME">EXPA</ns1:StringAttr>
+						<ns1:StringAttr ns1:attribute="CC_Cust_ID">TALF099535
+						</ns1:StringAttr>
+					</ns1:NameDetails>
+				</ns1:Name>
+			</ns1:Names>
+			<ns1:Addresses>
+				<ns1:Address ns1:type="Cur" ns1:id="1">
+					<ns1:HouseNumber>J D F House</ns1:HouseNumber>
+					<ns1:Street1>Barnett Way</ns1:Street1>
+					<ns1:City>Barnwood</ns1:City>
+					<ns1:PostZIPCode>GL43GG</ns1:PostZIPCode>
+					<ns1:Country>GB</ns1:Country>
+				</ns1:Address>
+			</ns1:Addresses>
+		</ns1:Applicant>
+	</ns1:Applicants>
+	<ns1:Decision>R</ns1:Decision>
+	<ns1:DecisionText>Review</ns1:DecisionText>
+	<ns1:DecisionReasonCodes>__CBPROCERROR__CBPROCERROR__LTV__KYCCHECK__COMPNAME__
+	</ns1:DecisionReasonCodes>
+	<ns1:AdditionalDetails>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="CC_Prop_ID">B110243</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="CC_Quote_ID">AALF110243</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="TransactionIDAppSysStatus">amssfect02v:5f50e23c:0006812e</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="CREDIT"
+			ns1:attribute="JDFGrade">A</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="CREDIT"
+			ns1:attribute="ProbabilityofDefault">0.4</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="CREDIT"
+			ns1:attribute="MaxLTV">138.726665139916</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="CREDIT"
+			ns1:attribute="MaxLTV10Percent">71.171542642022</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="QuoteID">AALF110243</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="DecisionReasonCode1">Experian Processing Error</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="DecisionReasonCode2">KYC</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="DecisionReasonCode3">Company Name Credit Bureau Mismatch</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="DecisionReasonCode4">LTV - Single Payment Maximum</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="ApplicationSystemStatus">RV</ns1:StringAttr>
+		<ns1:StringAttr ns1:category="APPL"
+			ns1:attribute="ApplicationSystemStatusWorst">RV</ns1:StringAttr>
+	</ns1:AdditionalDetails>
+</ns1:Response>
