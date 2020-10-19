@@ -1,0 +1,277 @@
+<!DOCTYPE etl SYSTEM "http://scriptella.javaforge.com/dtd/etl.dtd">
+<etl>
+	<description>
+		get data from table and print it
+	</description>
+
+	<properties>
+		<!-- <include href="etl.properties"/> -->
+		<!-- The new value is set only if it was not defined before -->
+		mydriver=mysql
+
+	</properties>
+
+	<connection id="mysqll" driver="mysql" url="$jdbc.url" user="$jdbc.username"
+		password="$jdbc.password" >
+ statement.batchSize=5000
+ statement.fetchSize = 40000
+		</connection>
+	<connection id="java" driver="janino" />
+
+
+ <query connection-id="mysqll">
+           
+            SELECT * FROM crb_application_addresses where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob caa_address =(java.sql.Clob) get("caa_address");
+                 
+                   Object id=get("caa_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_caa_address  =com.gj.Util.convertToString(caa_address,"java.sql.Clob");
+                        String decrypted_caa_address=cryptor.decrypt(text_caa_address);
+                        set("caa_address",newcryptor.encrypt(decrypted_caa_address));
+                                          System.out.println("Processing Table :crb_application_addresses : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update crb_application_addresses
+                set 
+                                caa_address=?caa_address,
+                                ebulk_batch_lot=1
+                where caa_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM organisations where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob o_primary_email_public_key =(java.sql.Clob) get("o_primary_email_public_key");
+                 
+                   Object id=get("o_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_o_primary_email_public_key  =com.gj.Util.convertToString(o_primary_email_public_key,"java.sql.Clob");
+                        String decrypted_o_primary_email_public_key=cryptor.decrypt(text_o_primary_email_public_key);
+                        set("o_primary_email_public_key",newcryptor.encrypt(decrypted_o_primary_email_public_key));
+                                          System.out.println("Processing Table :organisations : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update organisations
+                set 
+                                o_primary_email_public_key=?o_primary_email_public_key,
+                                ebulk_batch_lot=1
+                where o_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM ebulk_messages where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob em_xml_body =(java.sql.Clob) get("em_xml_body");
+                 
+                   Object id=get("em_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_em_xml_body  =com.gj.Util.convertToString(em_xml_body,"java.sql.Clob");
+                        String decrypted_em_xml_body=cryptor.decrypt(text_em_xml_body);
+                        set("em_xml_body",newcryptor.encrypt(decrypted_em_xml_body));
+                                          System.out.println("Processing Table :ebulk_messages : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update ebulk_messages
+                set 
+                                em_xml_body=?em_xml_body,
+                                ebulk_batch_lot=1
+                where em_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM users where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.lang.String u_title =(java.lang.String) get("u_title");
+     java.sql.Clob u_billing_details_xml =(java.sql.Clob) get("u_billing_details_xml");
+                 
+                   Object id=get("u_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_u_title  =com.gj.Util.convertToString(u_title,"java.lang.String");
+                        String decrypted_u_title=cryptor.decrypt(text_u_title);
+                        set("u_title",newcryptor.encrypt(decrypted_u_title));
+                        
+                        String text_u_billing_details_xml  =com.gj.Util.convertToString(u_billing_details_xml,"java.sql.Clob");
+                        String decrypted_u_billing_details_xml=cryptor.decrypt(text_u_billing_details_xml);
+                        set("u_billing_details_xml",newcryptor.encrypt(decrypted_u_billing_details_xml));
+                                          System.out.println("Processing Table :users : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update users
+                set 
+                                u_title=?u_title,
+                                u_billing_details_xml=?u_billing_details_xml,
+                                ebulk_batch_lot=1
+                where u_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM connection_config where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.lang.String cc_cjse_username =(java.lang.String) get("cc_cjse_username");
+     java.sql.Clob cc_crb_integrity_key =(java.sql.Clob) get("cc_crb_integrity_key");
+     java.lang.String cc_cjse_system_id =(java.lang.String) get("cc_cjse_system_id");
+     java.lang.String cc_cjse_host =(java.lang.String) get("cc_cjse_host");
+     java.sql.Clob cc_crb_failover_integrity_key =(java.sql.Clob) get("cc_crb_failover_integrity_key");
+     java.sql.Clob cc_cjse_client_certificate_password =(java.sql.Clob) get("cc_cjse_client_certificate_password");
+     java.sql.Clob cc_cjse_server_certificate =(java.sql.Clob) get("cc_cjse_server_certificate");
+     java.sql.Clob cc_cjse_password =(java.sql.Clob) get("cc_cjse_password");
+     java.sql.Clob cc_cjse_client_certificate =(java.sql.Clob) get("cc_cjse_client_certificate");
+                 
+                   Object id=get("cc_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_cc_cjse_username  =com.gj.Util.convertToString(cc_cjse_username,"java.lang.String");
+                        String decrypted_cc_cjse_username=cryptor.decrypt(text_cc_cjse_username);
+                        set("cc_cjse_username",newcryptor.encrypt(decrypted_cc_cjse_username));
+                        
+                        String text_cc_crb_integrity_key  =com.gj.Util.convertToString(cc_crb_integrity_key,"java.sql.Clob");
+                        String decrypted_cc_crb_integrity_key=cryptor.decrypt(text_cc_crb_integrity_key);
+                        set("cc_crb_integrity_key",newcryptor.encrypt(decrypted_cc_crb_integrity_key));
+                        
+                        String text_cc_cjse_system_id  =com.gj.Util.convertToString(cc_cjse_system_id,"java.lang.String");
+                        String decrypted_cc_cjse_system_id=cryptor.decrypt(text_cc_cjse_system_id);
+                        set("cc_cjse_system_id",newcryptor.encrypt(decrypted_cc_cjse_system_id));
+                        
+                        String text_cc_cjse_host  =com.gj.Util.convertToString(cc_cjse_host,"java.lang.String");
+                        String decrypted_cc_cjse_host=cryptor.decrypt(text_cc_cjse_host);
+                        set("cc_cjse_host",newcryptor.encrypt(decrypted_cc_cjse_host));
+                        
+                        String text_cc_crb_failover_integrity_key  =com.gj.Util.convertToString(cc_crb_failover_integrity_key,"java.sql.Clob");
+                        String decrypted_cc_crb_failover_integrity_key=cryptor.decrypt(text_cc_crb_failover_integrity_key);
+                        set("cc_crb_failover_integrity_key",newcryptor.encrypt(decrypted_cc_crb_failover_integrity_key));
+                        
+                        String text_cc_cjse_client_certificate_password  =com.gj.Util.convertToString(cc_cjse_client_certificate_password,"java.sql.Clob");
+                        String decrypted_cc_cjse_client_certificate_password=cryptor.decrypt(text_cc_cjse_client_certificate_password);
+                        set("cc_cjse_client_certificate_password",newcryptor.encrypt(decrypted_cc_cjse_client_certificate_password));
+                        
+                        String text_cc_cjse_server_certificate  =com.gj.Util.convertToString(cc_cjse_server_certificate,"java.sql.Clob");
+                        String decrypted_cc_cjse_server_certificate=cryptor.decrypt(text_cc_cjse_server_certificate);
+                        set("cc_cjse_server_certificate",newcryptor.encrypt(decrypted_cc_cjse_server_certificate));
+                        
+                        String text_cc_cjse_password  =com.gj.Util.convertToString(cc_cjse_password,"java.sql.Clob");
+                        String decrypted_cc_cjse_password=cryptor.decrypt(text_cc_cjse_password);
+                        set("cc_cjse_password",newcryptor.encrypt(decrypted_cc_cjse_password));
+                        
+                        String text_cc_cjse_client_certificate  =com.gj.Util.convertToString(cc_cjse_client_certificate,"java.sql.Clob");
+                        String decrypted_cc_cjse_client_certificate=cryptor.decrypt(text_cc_cjse_client_certificate);
+                        set("cc_cjse_client_certificate",newcryptor.encrypt(decrypted_cc_cjse_client_certificate));
+                                          System.out.println("Processing Table :connection_config : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update connection_config
+                set 
+                                cc_cjse_username=?cc_cjse_username,
+                                cc_crb_integrity_key=?cc_crb_integrity_key,
+                                cc_cjse_system_id=?cc_cjse_system_id,
+                                cc_cjse_host=?cc_cjse_host,
+                                cc_crb_failover_integrity_key=?cc_crb_failover_integrity_key,
+                                cc_cjse_client_certificate_password=?cc_cjse_client_certificate_password,
+                                cc_cjse_server_certificate=?cc_cjse_server_certificate,
+                                cc_cjse_password=?cc_cjse_password,
+                                cc_cjse_client_certificate=?cc_cjse_client_certificate,
+                                ebulk_batch_lot=1
+                where cc_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM invite_requests where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob ir_personal_data_xml =(java.sql.Clob) get("ir_personal_data_xml");
+                 
+                   Object id=get("ir_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_ir_personal_data_xml  =com.gj.Util.convertToString(ir_personal_data_xml,"java.sql.Clob");
+                        String decrypted_ir_personal_data_xml=cryptor.decrypt(text_ir_personal_data_xml);
+                        set("ir_personal_data_xml",newcryptor.encrypt(decrypted_ir_personal_data_xml));
+                                          System.out.println("Processing Table :invite_requests : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update invite_requests
+                set 
+                                ir_personal_data_xml=?ir_personal_data_xml,
+                                ebulk_batch_lot=1
+                where ir_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query>
+
+
+<script connection-id="java">
+
+		// System.out.println(com.gj.Util.getCnt());
+
+	</script>
+
+</etl>

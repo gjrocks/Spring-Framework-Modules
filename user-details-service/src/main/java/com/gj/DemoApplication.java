@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.util.StringUtils;
 
@@ -14,8 +13,6 @@ import com.gj.model.User;
 import com.gj.repository.UserRepository;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-
 public class DemoApplication {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
