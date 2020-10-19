@@ -1,0 +1,109 @@
+#row1 #col1 {
+	background-color: white;
+	size :50%;
+
+}
+#row1 #col2 {
+	background-color: #800080;
+	color: white;
+	height: 190px;
+}
+#row1 #col3 {
+	background-color: orange
+}
+#menus {
+  position: absolute;
+    bottom: 0;
+    right: 0;
+   text-align: left;
+}
+li {
+    display: inline;
+     float: left;
+   
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #db83cd;
+}
+
+.btn-prim {
+  color: #fff;
+  background-color: #1c1d69; 
+  border-color: #2e6da4;
+}
+
+.btn-prim:hover {
+  color: #fff;
+  background-color: #6268af;
+  border-color: #204d74;
+}
+
+.inner {
+    position: relative;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.navbar a {
+    display: inline-block;
+    border: 1px solid #fff;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 3px;
+    padding: 2px 15px;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+a {
+  color: #ffffff;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+.gmodal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('/images/loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .gmodal {
+    overflow: hidden;   
+}
+
+/* body {
+   background-image: url("background.png");
+   
+} */
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .gmodal {
+    display: block;
+}
+
+.navbar-inverse {
+   /* background-color: #6a476e;*/
+   background-image: url("images/background.png");
+    border-color: #080808;
+}
