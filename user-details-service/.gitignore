@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 /target/
 /chatdemo.log.location_IS_UNDEFINED/
 /log.location_IS_UNDEFINED/
+=======
+/.classpath
+>>>>>>> refs/heads/without_spring_cloud_user_service

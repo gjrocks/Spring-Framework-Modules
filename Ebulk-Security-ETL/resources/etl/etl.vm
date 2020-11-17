@@ -1,0 +1,44 @@
+ <query connection-id="mysqll">
+           
+            SELECT 
+            #foreach ($mapEntry in $cols.entrySet())
+      $mapEntry.key,
+#end $id
+
+             FROM $table where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+#foreach ($mapEntry in $cols.entrySet())
+     $mapEntry.value $mapEntry.key =($mapEntry.value) get("$mapEntry.key");
+#end
+                 
+                   Object id=get("$id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                   #foreach ($mapEntry in $cols.entrySet())
+   
+                        String text_$mapEntry.key  =com.gj.Util.convertToString($mapEntry.key,"$mapEntry.value");
+                        String decrypted_$mapEntry.key=cryptor.decrypt(text_$mapEntry.key);
+                        set("$mapEntry.key",newcryptor.encrypt(decrypted_$mapEntry.key));
+                     #end
+                     System.out.println("Processing Table :$table : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update $table
+                set 
+                #foreach ($mapEntry in $cols.entrySet())
+                $mapEntry.key=?$mapEntry.key,
+                #end
+                ebulk_batch_lot=1
+                where $id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query>

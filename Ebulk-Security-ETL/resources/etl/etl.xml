@@ -1,0 +1,109 @@
+<!DOCTYPE etl SYSTEM "http://scriptella.javaforge.com/dtd/etl.dtd">
+<etl>
+	<description>
+		get data from table and print it
+	</description>
+
+	<properties>
+		<!-- <include href="etl.properties"/> -->
+		<!-- The new value is set only if it was not defined before -->
+		mydriver=mysql
+
+	</properties>
+
+	<connection id="mysqll" driver="mysql" url="$jdbc.url" user="$jdbc.username"
+		password="$jdbc.password" >
+ statement.batchSize=5000
+ statement.fetchSize = 40000
+		</connection>
+	<connection id="java" driver="janino" />
+
+
+ <query connection-id="mysqll">
+           
+            SELECT 
+                  ca_disclosure_result,
+ ca_id
+
+             FROM crb_applications where ebulk_batch_lot=0 and ca_disclosure_result is not null;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.lang.String ca_disclosure_result =(java.lang.String) get("ca_disclosure_result");
+                 
+                   Object id=get("ca_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                  String text_ca_disclosure_result  =com.gj.Util.convertToString(ca_disclosure_result,"java.lang.String");
+                  String decrypted_ca_disclosure_result=cryptor.decrypt(text_ca_disclosure_result);
+                                                
+                                      String disclosureResult=null;
+                                      if (decrypted_ca_disclosure_result.equals("CLEAR")){
+                                       disclosureResult= "0";           
+                                       }else{
+                                       disclosureResult= "1";
+                                       }
+                                                set("ca_disclosure_result",disclosureResult);
+                                                
+                       
+                                          System.out.println("Processing Table :crb_applications : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update crb_applications
+                set 
+                                ca_d_r=?ca_disclosure_result,
+                                ebulk_batch_lot=1
+                where ca_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> 
+
+ <query connection-id="mysqll">
+           
+            SELECT 
+                  ca_disclosure_result,
+ ca_id
+
+             FROM crb_applications_archived where ebulk_batch_lot=0 and ca_disclosure_result is not null;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.lang.String ca_disclosure_result =(java.lang.String) get("ca_disclosure_result");
+                 
+                   Object id=get("ca_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                  String text_ca_disclosure_result  =com.gj.Util.convertToString(ca_disclosure_result,"java.lang.String");
+                  String decrypted_ca_disclosure_result=cryptor.decrypt(text_ca_disclosure_result);
+                                                
+                                      String disclosureResult=null;
+                                      if (decrypted_ca_disclosure_result.equals("CLEAR")){
+                                       disclosureResult= "0";           
+                                       }else{
+                                       disclosureResult= "1";
+                                       }
+                                                set("ca_disclosure_result",disclosureResult);
+                                                
+                       
+                                          System.out.println("Processing Table :crb_applications_archived : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update crb_applications_archived
+                set 
+                                ca_d_r=?ca_disclosure_result,
+                                ebulk_batch_lot=1
+                where ca_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> 
+</etl>

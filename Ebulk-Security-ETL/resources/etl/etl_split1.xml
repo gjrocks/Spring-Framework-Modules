@@ -1,0 +1,183 @@
+<!DOCTYPE etl SYSTEM "http://scriptella.javaforge.com/dtd/etl.dtd">
+<etl>
+	<description>
+		get data from table and print it
+	</description>
+
+	<properties>
+		<!-- <include href="etl.properties"/> -->
+		<!-- The new value is set only if it was not defined before -->
+		mydriver=mysql
+
+	</properties>
+
+	<connection id="mysqll" driver="mysql" url="$jdbc.url" user="$jdbc.username"
+		password="$jdbc.password" >
+ statement.batchSize=5000
+ statement.fetchSize = 40000
+		</connection>
+	<connection id="java" driver="janino" />
+
+
+ <query connection-id="mysqll">
+           
+            SELECT * FROM crb_applications_archived where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob ca_receive_paper_certificate_xml =(java.sql.Clob) get("ca_receive_paper_certificate_xml");
+     java.sql.Clob ca_personal_xml =(java.sql.Clob) get("ca_personal_xml");
+     java.lang.String ca_disclosure_result =(java.lang.String) get("ca_disclosure_result");
+                 
+                   Object id=get("ca_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_ca_receive_paper_certificate_xml  =com.gj.Util.convertToString(ca_receive_paper_certificate_xml,"java.sql.Clob");
+                        String decrypted_ca_receive_paper_certificate_xml=cryptor.decrypt(text_ca_receive_paper_certificate_xml);
+                        set("ca_receive_paper_certificate_xml",newcryptor.encrypt(decrypted_ca_receive_paper_certificate_xml));
+                        
+                        String text_ca_personal_xml  =com.gj.Util.convertToString(ca_personal_xml,"java.sql.Clob");
+                        String decrypted_ca_personal_xml=cryptor.decrypt(text_ca_personal_xml);
+                        set("ca_personal_xml",newcryptor.encrypt(decrypted_ca_personal_xml));
+                        
+                        String text_ca_disclosure_result  =com.gj.Util.convertToString(ca_disclosure_result,"java.lang.String");
+                        String decrypted_ca_disclosure_result=cryptor.decrypt(text_ca_disclosure_result);
+                        set("ca_disclosure_result",newcryptor.encrypt(decrypted_ca_disclosure_result));
+                                          System.out.println("Processing Table :crb_applications_archived : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update crb_applications_archived
+                set 
+                                ca_receive_paper_certificate_xml=?ca_receive_paper_certificate_xml,
+                                ca_personal_xml=?ca_personal_xml,
+                                ca_disclosure_result=?ca_disclosure_result,
+                                ebulk_batch_lot=1
+                where ca_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM crb_applications where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob ca_receive_paper_certificate_xml =(java.sql.Clob) get("ca_receive_paper_certificate_xml");
+     java.sql.Clob ca_personal_xml =(java.sql.Clob) get("ca_personal_xml");
+     java.lang.String ca_disclosure_result =(java.lang.String) get("ca_disclosure_result");
+                 
+                   Object id=get("ca_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_ca_receive_paper_certificate_xml  =com.gj.Util.convertToString(ca_receive_paper_certificate_xml,"java.sql.Clob");
+                        String decrypted_ca_receive_paper_certificate_xml=cryptor.decrypt(text_ca_receive_paper_certificate_xml);
+                        set("ca_receive_paper_certificate_xml",newcryptor.encrypt(decrypted_ca_receive_paper_certificate_xml));
+                        
+                        String text_ca_personal_xml  =com.gj.Util.convertToString(ca_personal_xml,"java.sql.Clob");
+                        String decrypted_ca_personal_xml=cryptor.decrypt(text_ca_personal_xml);
+                        set("ca_personal_xml",newcryptor.encrypt(decrypted_ca_personal_xml));
+                        
+                        String text_ca_disclosure_result  =com.gj.Util.convertToString(ca_disclosure_result,"java.lang.String");
+                        String decrypted_ca_disclosure_result=cryptor.decrypt(text_ca_disclosure_result);
+                        set("ca_disclosure_result",newcryptor.encrypt(decrypted_ca_disclosure_result));
+                                          System.out.println("Processing Table :crb_applications : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update crb_applications
+                set 
+                                ca_receive_paper_certificate_xml=?ca_receive_paper_certificate_xml,
+                                ca_personal_xml=?ca_personal_xml,
+                                ca_disclosure_result=?ca_disclosure_result,
+                                ebulk_batch_lot=1
+                where ca_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM disclosure_data where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob dd_xml =(java.sql.Clob) get("dd_xml");
+                 
+                   Object id=get("dd_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_dd_xml  =com.gj.Util.convertToString(dd_xml,"java.sql.Clob");
+                        String decrypted_dd_xml=cryptor.decrypt(text_dd_xml);
+                        set("dd_xml",newcryptor.encrypt(decrypted_dd_xml));
+                                          System.out.println("Processing Table :disclosure_data : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update disclosure_data
+                set 
+                                dd_xml=?dd_xml,
+                                ebulk_batch_lot=1
+                where dd_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query> <query connection-id="mysqll">
+           
+            SELECT * FROM crb_application_names where ebulk_batch_lot=0;
+            <query connection-id="java">
+            
+          long start=System.currentTimeMillis();  
+     java.sql.Clob can_name =(java.sql.Clob) get("can_name");
+                 
+                   Object id=get("can_id");
+                    set("id",id);
+                  com.gj.OldCryptor cryptor=  com.gj.OldCryptor.getInstance();
+                 com.gj.NewCryptor newcryptor=  com.gj.NewCryptor.getInstance();
+                 
+                
+                      
+                        String text_can_name  =com.gj.Util.convertToString(can_name,"java.sql.Clob");
+                        String decrypted_can_name=cryptor.decrypt(text_can_name);
+                        set("can_name",newcryptor.encrypt(decrypted_can_name));
+                                          System.out.println("Processing Table :crb_application_names : id:" + id); 
+                     long end=System.currentTimeMillis();
+                                          com.gj.Util.addEncryptionTime((end-start));
+                        next();
+                <script connection-id="mysqll">
+                update crb_application_names
+                set 
+                                can_name=?can_name,
+                                ebulk_batch_lot=1
+                where can_id= ?id;
+                     
+               </script> 
+          
+            </query>   
+      </query>
+
+
+<script connection-id="java">
+
+		// System.out.println(com.gj.Util.getCnt());
+
+	</script>
+
+</etl>

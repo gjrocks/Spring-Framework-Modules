@@ -1,0 +1,32 @@
+[
+  {
+    "name": "userservice",
+    "image": "<account-id>.dkr.ecr.ap-south-1.amazonaws.com/gjrepo:latest",
+    "memory": 2048,
+    "essential": true,
+    "networkMode": "awsvpc",
+
+    "environment": [
+     {
+       "name": "custom",
+       "value": "val"
+     }
+   ],
+
+    "logConfiguration": {
+     "logDriver": "awslogs",
+     "options": {
+       "awslogs-group": "userservice",
+       "awslogs-region": "ap-south-1",
+       "awslogs-stream-prefix": "userservice"
+     }
+   },
+    "portMappings": [
+      {
+        "containerPort": 7000,
+        "hostPort": 7000,
+        "protocol":"tcp"
+      }
+    ]
+  }
+]

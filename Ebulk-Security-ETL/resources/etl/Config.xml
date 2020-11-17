@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+<configurations>
+<Config>
+	<tableName>crb_applications</tableName>
+
+	<columns>
+		<Column>
+			<columnName>ca_id</columnName>
+			<dataType>java.lang.Long</dataType>
+			<isPrimaryKey>true</isPrimaryKey>
+			<sourceType>PLAIN</sourceType>
+			<destType>PLAIN</destType>
+		</Column>
+		<Column>
+			<columnName>ca_disclosure_result</columnName>
+			<dataType>java.lang.String</dataType>
+			<isPrimaryKey>false</isPrimaryKey>
+			<sourceType>ENCRYPTED</sourceType>
+			<destType>PLAIN</destType>
+		</Column>
+	</columns>
+	</Config>
+<Config>
+	<tableName>crb_applications_archived</tableName>
+
+    <columns>
+        <Column>
+            <columnName>ca_id</columnName>
+            <dataType>java.lang.Long</dataType>
+            <isPrimaryKey>true</isPrimaryKey>
+            <sourceType>PLAIN</sourceType>
+            <destType>PLAIN</destType>
+        </Column>
+        <Column>
+            <columnName>ca_disclosure_result</columnName>
+            <dataType>java.lang.String</dataType>
+            <isPrimaryKey>false</isPrimaryKey>
+            <sourceType>ENCRYPTED</sourceType>
+            <destType>PLAIN</destType>
+        </Column>
+    </columns>
+</Config>
+</configurations>
+</Configuration>

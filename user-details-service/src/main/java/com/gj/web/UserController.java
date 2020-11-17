@@ -2,15 +2,13 @@ package com.gj.web;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.net.URI;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+//import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,18 +33,19 @@ public class UserController {
 
 	private String whereAbouts = getWhereAbouts();
 
-	@Autowired
-	private DiscoveryClient discoveryClient;
-
-	public Optional<URI> serviceUrl() {
-		return discoveryClient.getInstances("user-service").stream().map(si -> si.getUri()).findFirst();
-	}
+	/*
+	 * @Autowired private DiscoveryClient discoveryClient;
+	 * 
+	 * public Optional<URI> serviceUrl() { return
+	 * discoveryClient.getInstances("user-service").stream().map(si ->
+	 * si.getUri()).findFirst(); }
+	 */
 
 	@RequestMapping(value = "/ping", method = RequestMethod.GET)
 	public ResponseEntity<String> ping() {
 		logger.debug("Returning from the ping from container :" + System.getenv("HOSTNAME") + "::"
 				+ System.getProperty("HOSTNAME"));
-		 System.out.println(serviceUrl());
+		 //System.out.println(serviceUrl());
 		return new ResponseEntity<String>("<H1>Service is running at <br>" + getWhereAbouts() + "</H1>", HttpStatus.OK);
 	}
 
