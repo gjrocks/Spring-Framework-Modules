@@ -19,12 +19,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.gj.DemoApplication;
+import com.gj.UserApplication;
 
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = DemoApplication.class)
+@ContextConfiguration(classes = UserApplication.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserControllerTest {

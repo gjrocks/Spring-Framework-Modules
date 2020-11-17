@@ -13,15 +13,15 @@ import com.gj.model.User;
 import com.gj.repository.UserRepository;
 
 @SpringBootApplication
-public class DemoApplication {
+public class UserApplication {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserApplication.class);
 
 	@Value("${profile:test}")
 	private String profile;
 	
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(UserApplication.class, args);
 	}
 	
 	@Bean
