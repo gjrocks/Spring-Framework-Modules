@@ -5,8 +5,10 @@ import java.net.NetworkInterface;
 import java.util.Enumeration;
 import java.util.List;
 
-import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger; 
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpStatus;
@@ -52,12 +54,14 @@ public class UserController {
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUser() {
 		logger.debug("Returning all the User");
+		
 		return new ResponseEntity<List<User>>(userService.getAllUser(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUserById(@PathVariable("id") long id) throws UserException {
 		logger.debug("User id to return " + id);
+		MDC.put("id", id+"");
 		User toDo = userService.getUserById(id);
 		if (toDo == null || toDo.getId() <= 0) {
 			throw new UserException("User doesnt exist");

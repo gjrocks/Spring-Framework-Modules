@@ -2,6 +2,8 @@ package com.gj.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,12 @@ public class ToDoController {
 
 	@Autowired
 	private ToDoService toDoService;
+	
+	@RequestMapping(value="/ping", method=RequestMethod.GET)
+	public ResponseEntity<String> ping(){
+    	
+		return new ResponseEntity<String>("OK", HttpStatus.OK);
+	}
 	
 	@RequestMapping(value="/todo", method=RequestMethod.GET)
 	public ResponseEntity<List<ToDo>> getAllToDo(){
@@ -71,6 +79,13 @@ public class ToDoController {
     	}
 		return new ResponseEntity<ToDo>(toDoService.saveToDo(payload), HttpStatus.OK);
    	}
+    
+   // @PostMapping(value = "/zoot", consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+    @RequestMapping(value = "/zoot", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<String> handleMessage(@RequestBody String xmlOrJson, HttpServletRequest request) throws Exception {
+    	System.out.println(xmlOrJson);
+    	 return new ResponseEntity<String>(xmlOrJson, HttpStatus.OK);
+    }
     @RequestMapping(value = "/todo", method = RequestMethod.PATCH)
    	public ResponseEntity<ToDo>  updateToDo(@RequestBody ToDo payload) throws ToDoException{
     	logger.info("Payload to update " + payload);

@@ -1,0 +1,10 @@
+server:
+  port: 7002
+
+ribbon:
+  eureka:
+     :enabled: false
+     
+    
+  
+

@@ -1,0 +1,73 @@
+docker build -t userservice/latest .
+docker run -it -p 7000:7000 userservice/latest
+
+
+java -javaagent:C:/NewRelic/newrelic-user-service/newrelic.jar -jar user-details-service-0.0.1-SNAPSHOT.jar
+
+
+<configuration>
+
+   
+ <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+        
+        <!-- <encoder class="com.newrelic.logging.logback.NewRelicEncoder"/> -->
+        
+    </appender>
+    <appender name="FILE-AUDIT"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.location}/userservice.log</file>
+        <encoder> <!-- class="ch.qos.logback.classic.encoder.PatternLayoutEncoder" -->
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${log.location}/archived/userservice.%d{yyyy-MM-dd}.%i.log
+                        </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+    </appender>
+
+  <appender name="ASYNC" class="com.newrelic.logging.logback.NewRelicAsyncAppender">
+    <appender-ref ref="STDOUT" />
+  </appender>
+  
+    <logger name="org.jzen" level="debug"
+        additivity="false">
+        <appender-ref ref="ASYNC" />
+         <!-- <appender-ref ref="STDOUT" /> -->
+    </logger>
+
+<logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="debug">
+   <!-- <appender-ref ref="FILE-AUDIT" />
+   <appender-ref ref="STDOUT" /> -->
+   <appender-ref ref="ASYNC" />
+</logger>
+
+	<logger name="com.gj" level="debug"
+		additivity="false">
+		<!-- <appender-ref ref="FILE-AUDIT" />
+		 <appender-ref ref="STDOUT" />
+ -->
+ <appender-ref ref="ASYNC" />
+ 	</logger>
+	
+	
+    <root level="warn">
+        <!-- <appender-ref ref="FILE-AUDIT" />
+         <appender-ref ref="STDOUT" /> -->
+         <appender-ref ref="ASYNC" />
+    </root>
+
+</configuration> 

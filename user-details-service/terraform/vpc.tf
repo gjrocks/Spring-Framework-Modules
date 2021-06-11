@@ -185,10 +185,10 @@ resource "aws_iam_role_policy_attachment" "ecs_tasks_execution_role" {
 resource "aws_ecs_task_definition" "gj_userservice_aws_ecs_task" {
   family                = "gj_userservice_aws_ecs_task"
   container_definitions = file("./ecs-task.json")
-task_role_arn           = aws_iam_role.gj_ecs_tasks_execution_role.arn
+  task_role_arn           = aws_iam_role.gj_ecs_tasks_execution_role.arn
 execution_role_arn      = aws_iam_role.gj_ecs_tasks_execution_role.arn
 network_mode            = "awsvpc"
-cpu                = "512"
+cpu = "256"
 memory = "2048"
 requires_compatibilities = [
     "FARGATE"]

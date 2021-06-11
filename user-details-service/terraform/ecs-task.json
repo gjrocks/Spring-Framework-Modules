@@ -1,7 +1,7 @@
-[
+[ 
   {
     "name": "userservice",
-    "image": "<account-id>.dkr.ecr.ap-south-1.amazonaws.com/gjrepo:latest",
+    "image": "387820889742.dkr.ecr.ap-south-1.amazonaws.com/gjrepo:latest",
     "memory": 2048,
     "essential": true,
     "networkMode": "awsvpc",

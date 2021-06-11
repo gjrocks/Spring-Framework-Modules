@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User getUserById(long id) {
+		logger.debug("Service Call for id", id);
 		return userRepository.findOne(id);
 	}
 
